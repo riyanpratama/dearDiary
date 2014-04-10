@@ -39,6 +39,35 @@ namespace DearDiary
             MainListBox.ItemsSource = db.diary;
         }
 
+        private void MainListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            try
+            {
+                MainListBox.SelectedItem = null;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void menuEdit_Click(object sender, RoutedEventArgs e)
+        {
+            int id = ((sender as MenuItem).DataContext as Story).idStory;
+            // lempar id, title, created, textStory
+            NavigationService.Navigate(new Uri("/EditPage.xaml?id=" + id.ToString(), UriKind.Relative));
+        }
+
+        private void menuDelete_Click(object sender, RoutedEventArgs e)
+        {
+            int id = ((sender as MenuItem).DataContext as Story).idStory;
+            db = new StoryContext("isostore:/Story.sdf");
+            Story _story = (from item in db.diary where item.idStory == id select item).FirstOrDefault();
+            db.diary.DeleteOnSubmit(_story);
+            db.SubmitChanges();
+            MainListBox.ItemsSource = db.diary;
+        }
+
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{
