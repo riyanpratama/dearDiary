@@ -37,13 +37,16 @@ namespace DearDiary
             }
 
             MainListBox.ItemsSource = db.diary;
+            MainListBox.SelectedItem = null;
         }
 
         private void MainListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             try
             {
-                MainListBox.SelectedItem = null;
+                int id = (MainListBox.SelectedItem as Story).idStory;
+                // MessageBox.Show((MainListBox.SelectedItem as Story).idStory.ToString());               
+                NavigationService.Navigate(new Uri("/ReadStory.xaml?id=" + id.ToString(), UriKind.Relative));
             }
             catch
             {
