@@ -71,6 +71,16 @@ namespace DearDiary
             MainListBox.ItemsSource = db.diary;
         }
 
+        private void btnHelp_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Help help help help");
+        }
+
+        private void btnAbout_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+        }
+
         // Sample code for building a localized ApplicationBar
         //private void BuildLocalizedApplicationBar()
         //{

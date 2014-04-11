@@ -54,9 +54,9 @@
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" Mode="Minimized" BackgroundColor="#e34d64">
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="Help" />
-                <shell:ApplicationBarMenuItem Text="Setting" />
-                <shell:ApplicationBarMenuItem Text="About us" />
+                <shell:ApplicationBarMenuItem Text="Help"  x:Name="btnHelp" Click="btnHelp_Click"/>
+                <shell:ApplicationBarMenuItem Text="Setting" x:Name="btnSetting"/>
+                <shell:ApplicationBarMenuItem Text="About us" x:Name="btnAbout" Click="btnAbout_Click"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
