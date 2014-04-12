@@ -13,16 +13,28 @@
     Foreground="{StaticResource PhoneForegroundBrush}"
     SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True" Loaded="PhoneApplicationPage_Loaded">
-    <phone:Panorama  Title="dear diary" VerticalAlignment="Top">
-        <phone:PanoramaItem CacheMode="{x:Null}" Header="add story">
+    <phone:Panorama  Title="" VerticalAlignment="Top">
+        <phone:Panorama.Background>
+            <ImageBrush Stretch="Fill" ImageSource="/Assets/Images/background.png"/>
+        </phone:Panorama.Background>
+        <phone:Panorama.TitleTemplate>
+            <DataTemplate>
+                <Grid Margin="4,60,0,30">
+                    <Image Source="/Assets/Images/logo.png" HorizontalAlignment="Left" Height="90"/>
+                    <!--<TextBlock Text="Write your story!" FontSize="50" FontWeight="Light"     Foreground="#FFF6B600" Margin="220,0,0,0"/>-->
+                </Grid>
+            </DataTemplate>
+        </phone:Panorama.TitleTemplate>
+        <phone:PanoramaItem CacheMode="{x:Null}" Header="add story" Foreground="Black">
             <phone:PanoramaItem.RenderTransform>
                 <TranslateTransform/>
             </phone:PanoramaItem.RenderTransform>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <Button x:Name="btnAddNew" Content="tap me" Width="300" Height="300" Click="btnAddNew_Click" />
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="top">
+                <Image Source="/Assets/Images/add_button.png" Width="340" MouseLeftButtonDown="Image_MouseLeftButtonDown">
+                </Image>
             </StackPanel>
         </phone:PanoramaItem>
-        <phone:PanoramaItem CacheMode="{x:Null}" Header="my story">
+        <phone:PanoramaItem CacheMode="{x:Null}" Header="my story" Foreground="Black">
             <phone:PanoramaItem.RenderTransform>
                 <TranslateTransform/>
             </phone:PanoramaItem.RenderTransform>
@@ -33,9 +45,9 @@
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,5,0,0">
                                 <Rectangle Width="100" Height="100" Fill="#e34d64" />
                                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0">
-                                    <TextBlock Text="{Binding Title}" FontSize="26" />
-                                    <TextBlock Text="{Binding Created}" FontSize="20" />
-                                    <TextBlock Text="{Binding TextStory}" FontSize="20" FontStyle="Italic"/>
+                                    <TextBlock Text="{Binding Title}" FontSize="26" Foreground="Black"/>
+                                    <TextBlock Text="{Binding Created}" FontSize="20" Foreground="Black"/>
+                                    <TextBlock Text="{Binding TextStory}" FontSize="20" Foreground="Black" FontStyle="Italic"/>
                                 </StackPanel>
                                 <toolkit:ContextMenuService.ContextMenu>
                                     <toolkit:ContextMenu>
@@ -52,9 +64,9 @@
         </phone:PanoramaItem>
     </phone:Panorama>
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" Mode="Minimized" BackgroundColor="#e34d64">
+        <shell:ApplicationBar IsVisible="True" Mode="Minimized" BackgroundColor="Aqua" >
             <shell:ApplicationBar.MenuItems>
-                <shell:ApplicationBarMenuItem Text="Help"  x:Name="btnHelp" Click="btnHelp_Click"/>
+                <shell:ApplicationBarMenuItem Text="Help"  x:Name="btnHelp" Click="btnHelp_Click" />
                 <shell:ApplicationBarMenuItem Text="Setting" x:Name="btnSetting"/>
                 <shell:ApplicationBarMenuItem Text="About us" x:Name="btnAbout" Click="btnAbout_Click"/>
             </shell:ApplicationBar.MenuItems>

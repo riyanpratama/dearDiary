@@ -8,6 +8,7 @@ using System.Windows.Navigation;
 using Microsoft.Phone.Controls;
 using Microsoft.Phone.Shell;
 using DearDiary.Resources;
+using System.ComponentModel;
 
 namespace DearDiary
 {
@@ -21,11 +22,7 @@ namespace DearDiary
             // Sample code to localize the ApplicationBar
             //BuildLocalizedApplicationBar();
         }
-        
-        private void btnAddNew_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new Uri("/AddStory.xaml", UriKind.Relative));
-        }
+
 
         StoryContext db;
         private void PhoneApplicationPage_Loaded(object sender, RoutedEventArgs e)
@@ -38,6 +35,11 @@ namespace DearDiary
 
             MainListBox.ItemsSource = db.diary;
             MainListBox.SelectedItem = null;
+
+            while (this.NavigationService.BackStack.Any())
+            {
+                this.NavigationService.RemoveBackEntry();
+            }
         }
 
         private void MainListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -78,23 +80,20 @@ namespace DearDiary
 
         private void btnAbout_Click(object sender, EventArgs e)
         {
-            NavigationService.Navigate(new Uri("/MainPage.xaml", UriKind.Relative));
+            NavigationService.Navigate(new Uri("/AboutUs.xaml", UriKind.Relative));
         }
 
-        // Sample code for building a localized ApplicationBar
-        //private void BuildLocalizedApplicationBar()
+        private void Image_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/AddStory.xaml", UriKind.Relative));
+        }
+
+        //protected override void OnBackKeyPress(CancelEventArgs e)
         //{
-        //    // Set the page's ApplicationBar to a new instance of ApplicationBar.
-        //    ApplicationBar = new ApplicationBar();
-
-        //    // Create a new button and set the text value to the localized string from AppResources.
-        //    ApplicationBarIconButton appBarButton = new ApplicationBarIconButton(new Uri("/Assets/AppBar/appbar.add.rest.png", UriKind.Relative));
-        //    appBarButton.Text = AppResources.AppBarButtonText;
-        //    ApplicationBar.Buttons.Add(appBarButton);
-
-        //    // Create a new menu item with the localized string from AppResources.
-        //    ApplicationBarMenuItem appBarMenuItem = new ApplicationBarMenuItem(AppResources.AppBarMenuItemText);
-        //    ApplicationBar.MenuItems.Add(appBarMenuItem);
+        //    if (MessageBox.Show("Are you sure you want to exit?", "Confirm Exit?", MessageBoxButton.OKCancel) != MessageBoxResult.OK)
+        //    {
+        //        e.Cancel = true;
+        //    }
         //}
     }
 }
