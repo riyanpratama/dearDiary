@@ -159,10 +159,18 @@
     <Content Include="Assets\ApplicationIcon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="Assets\Images\AddStory.png" />
     <Content Include="Assets\Images\add_button.png" />
+    <Content Include="Assets\Images\angry_bg.png" />
     <Content Include="Assets\Images\background.png" />
     <Content Include="Assets\Images\detail_background.png" />
+    <Content Include="Assets\Images\happy_bg.png" />
     <Content Include="Assets\Images\logo.png" />
+    <Content Include="Assets\Images\loved_bg.png" />
+    <Content Include="Assets\Images\MyStory.png" />
+    <Content Include="Assets\Images\sad.png" />
+    <Content Include="Assets\Images\sad_bg.png" />
+    <Content Include="Assets\Images\sick_bg.png" />
     <Content Include="Assets\Tiles\FlipCycleTileLarge.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -33,6 +33,7 @@ namespace DearDiary
 
                 txtReadStory.Text = _story.TextStory;
                 txtReadCreated.Text = _story.Created;
+                titlePage.Text = _story.Title;
             }
         }
 

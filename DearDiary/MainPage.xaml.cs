@@ -33,7 +33,7 @@ namespace DearDiary
                 db.CreateDatabase();
             }
 
-            MainListBox.ItemsSource = db.diary;
+            MainListBox.ItemsSource = db.diary.OrderBy(item => item.idStory);
             MainListBox.SelectedItem = null;
 
             while (this.NavigationService.BackStack.Any())
@@ -47,7 +47,6 @@ namespace DearDiary
             try
             {
                 int id = (MainListBox.SelectedItem as Story).idStory;
-                // MessageBox.Show((MainListBox.SelectedItem as Story).idStory.ToString());               
                 NavigationService.Navigate(new Uri("/ReadStory.xaml?id=" + id.ToString(), UriKind.Relative));
             }
             catch

@@ -26,7 +26,15 @@
                 </Grid>
             </DataTemplate>
         </phone:Panorama.TitleTemplate>
-        <phone:PanoramaItem CacheMode="{x:Null}" Header="add story" Foreground="Black">
+        <phone:PanoramaItem CacheMode="{x:Null}" Header="" Foreground="Black">
+            <phone:PanoramaItem.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Image Source="/Assets/Images/AddStory.png" Height="59" Margin="0,15,0,0" HorizontalAlignment="Left"/>
+                        <!--<TextBlock Text="ADD STORY" FontFamily="Segoe WP" FontSize="35" FontWeight="SemiBold" Foreground="#FFF6B600" Margin="0,12,0,0"/>-->
+                    </Grid>
+                </DataTemplate>
+            </phone:PanoramaItem.HeaderTemplate>
             <phone:PanoramaItem.RenderTransform>
                 <TranslateTransform/>
             </phone:PanoramaItem.RenderTransform>
@@ -35,20 +43,29 @@
                 </Image>
             </StackPanel>
         </phone:PanoramaItem>
-        <phone:PanoramaItem CacheMode="{x:Null}" Header="my story" Foreground="Black">
+        
+        <phone:PanoramaItem CacheMode="{x:Null}" Header="" Foreground="Black">
             <phone:PanoramaItem.RenderTransform>
                 <TranslateTransform/>
             </phone:PanoramaItem.RenderTransform>
+            <phone:PanoramaItem.HeaderTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Image Source="/Assets/Images/MyStory.png" Height="59" Margin="0,15,0,0"/>
+                        <!--<TextBlock Text="YOUR STORY" FontFamily="Segoe WP" FontSize="35" FontWeight="SemiBold" Foreground="#FFF6B600" Margin="0,12,0,0"/>-->
+                    </Grid>
+                </DataTemplate>
+            </phone:PanoramaItem.HeaderTemplate>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top">
-                <ListBox x:Name="MainListBox" Height="418" SelectionChanged="MainListBox_SelectionChanged">
+                <ListBox x:Name="MainListBox" Height="539" SelectionChanged="MainListBox_SelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,5,0,0">
-                                <Rectangle Width="100" Height="100" Fill="#e34d64" />
-                                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0">
-                                    <TextBlock Text="{Binding Title}" FontSize="26" Foreground="Black"/>
-                                    <TextBlock Text="{Binding Created}" FontSize="20" Foreground="Black"/>
-                                    <TextBlock Text="{Binding TextStory}" FontSize="20" Foreground="Black" FontStyle="Italic"/>
+                            <StackPanel x:Name="listPanel" Width="430" Height="100" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,5,0,10" Background="White">
+                                <Image Source="{Binding Feeling}" Height="100"/>
+                                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,-8,0,0">
+                                    <TextBlock Text="{Binding Title}" FontSize="28" FontWeight="Light" Foreground="Black"/>
+                                    <TextBlock Text="{Binding Created}" FontSize="18" FontWeight="Light" Foreground="Black"/>
+                                    <TextBlock Text="{Binding TextStory}" FontSize="18" Foreground="Black" FontWeight="Light" Width="250"/>
                                 </StackPanel>
                                 <toolkit:ContextMenuService.ContextMenu>
                                     <toolkit:ContextMenu>
@@ -61,14 +78,13 @@
                     </ListBox.ItemTemplate>
                 </ListBox>
             </StackPanel>
-
         </phone:PanoramaItem>
     </phone:Panorama>
+    
     <phone:PhoneApplicationPage.ApplicationBar>
         <shell:ApplicationBar IsVisible="True" Mode="Minimized" BackgroundColor="Aqua" >
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="Help"  x:Name="btnHelp" Click="btnHelp_Click" />
-                <shell:ApplicationBarMenuItem Text="Setting" x:Name="btnSetting"/>
                 <shell:ApplicationBarMenuItem Text="About us" x:Name="btnAbout" Click="btnAbout_Click"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>
