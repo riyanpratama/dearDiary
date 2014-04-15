@@ -39,7 +39,7 @@
                 <TranslateTransform/>
             </phone:PanoramaItem.RenderTransform>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="top">
-                <Image Source="/Assets/Images/add_button.png" Width="340" MouseLeftButtonDown="Image_MouseLeftButtonDown">
+                <Image Source="/Assets/Images/add_button.png" Width="250" MouseLeftButtonDown="Image_MouseLeftButtonDown">
                 </Image>
             </StackPanel>
         </phone:PanoramaItem>
@@ -57,10 +57,10 @@
                 </DataTemplate>
             </phone:PanoramaItem.HeaderTemplate>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top">
-                <ListBox x:Name="MainListBox" Height="539" SelectionChanged="MainListBox_SelectionChanged">
+                <ListBox x:Name="MainListBox" Grid.Column="1" MinHeight="500" SelectionChanged="MainListBox_SelectionChanged">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
-                            <StackPanel x:Name="listPanel" Width="430" Height="100" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,5,0,10" Background="White">
+                            <StackPanel x:Name="listPanel" Grid.Row="1" MinWidth="430" Height="100" Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,5,0,10" Background="White">
                                 <Image Source="{Binding Feeling}" Height="100"/>
                                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,-8,0,0">
                                     <TextBlock Text="{Binding Title}" FontSize="28" FontWeight="Light" Foreground="Black"/>
@@ -82,9 +82,10 @@
     </phone:Panorama>
     
     <phone:PhoneApplicationPage.ApplicationBar>
-        <shell:ApplicationBar IsVisible="True" Mode="Minimized" BackgroundColor="Aqua" >
+        <shell:ApplicationBar IsVisible="True" Mode="Minimized" BackgroundColor="#d64420" >
             <shell:ApplicationBar.MenuItems>
                 <shell:ApplicationBarMenuItem Text="Help"  x:Name="btnHelp" Click="btnHelp_Click" />
+                <shell:ApplicationBarMenuItem Text="Change PIN" x:Name="btnChg" Click="btnChg_Click"/>
                 <shell:ApplicationBarMenuItem Text="About us" x:Name="btnAbout" Click="btnAbout_Click"/>
             </shell:ApplicationBar.MenuItems>
         </shell:ApplicationBar>

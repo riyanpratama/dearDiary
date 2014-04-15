@@ -67,6 +67,8 @@ namespace DearDiary
         // This code will not execute when the application is first launched
         private void Application_Activated(object sender, ActivatedEventArgs e)
         {
+            //MessageBox.Show("From graveyard");
+            
         }
 
         // Code to execute when the application is deactivated (sent to background)
@@ -79,6 +81,7 @@ namespace DearDiary
         // This code will not execute when the application is deactivated
         private void Application_Closing(object sender, ClosingEventArgs e)
         {
+            //MessageBox.Show("Ok");
         }
 
         // Code to execute if a navigation fails

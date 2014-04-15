@@ -18,9 +18,6 @@ namespace DearDiary
         public MainPage()
         {
             InitializeComponent();
-
-            // Sample code to localize the ApplicationBar
-            //BuildLocalizedApplicationBar();
         }
 
 
@@ -51,30 +48,35 @@ namespace DearDiary
             }
             catch
             {
-
+                
             }
         }
 
         private void menuEdit_Click(object sender, RoutedEventArgs e)
         {
             int id = ((sender as MenuItem).DataContext as Story).idStory;
-            // lempar id, title, created, textStory
             NavigationService.Navigate(new Uri("/EditPage.xaml?id=" + id.ToString(), UriKind.Relative));
         }
 
         private void menuDelete_Click(object sender, RoutedEventArgs e)
         {
-            int id = ((sender as MenuItem).DataContext as Story).idStory;
-            db = new StoryContext("isostore:/Story.sdf");
-            Story _story = (from item in db.diary where item.idStory == id select item).FirstOrDefault();
-            db.diary.DeleteOnSubmit(_story);
-            db.SubmitChanges();
-            MainListBox.ItemsSource = db.diary;
+            MessageBoxResult result = MessageBox.Show("Would you like to delete this story?", "Delete Story", MessageBoxButton.OKCancel);
+
+            if (result == MessageBoxResult.OK)
+            {
+                // delete data
+                int id = ((sender as MenuItem).DataContext as Story).idStory;
+                db = new StoryContext("isostore:/Story.sdf");
+                Story _story = (from item in db.diary where item.idStory == id select item).FirstOrDefault();
+                db.diary.DeleteOnSubmit(_story);
+                db.SubmitChanges();
+                MainListBox.ItemsSource = db.diary;
+            }
         }
 
         private void btnHelp_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Help help help help");
+            MessageBox.Show("Tap add button to write your story, or tap your story to read it.");
         }
 
         private void btnAbout_Click(object sender, EventArgs e)
@@ -87,12 +89,10 @@ namespace DearDiary
             NavigationService.Navigate(new Uri("/AddStory.xaml", UriKind.Relative));
         }
 
-        //protected override void OnBackKeyPress(CancelEventArgs e)
-        //{
-        //    if (MessageBox.Show("Are you sure you want to exit?", "Confirm Exit?", MessageBoxButton.OKCancel) != MessageBoxResult.OK)
-        //    {
-        //        e.Cancel = true;
-        //    }
-        //}
+        private void btnChg_Click(object sender, EventArgs e)
+        {
+            NavigationService.Navigate(new Uri("/chgPIN.xaml", UriKind.Relative));
+        }
+
     }
 }
